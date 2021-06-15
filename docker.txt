@@ -1,0 +1,2087 @@
+============================================================================================================================================================================================================================================
+
+
+													Vagrant
+
+
+============================================================================================================================================================================================================================================
+
+
+
+
+
+Spaceible@SITS-AI-SERVER MINGW64 /d
+$ cd /e
+
+Spaceible@SITS-AI-SERVER MINGW64 /e
+$ ls -lrt
+total 12
+drwxr-xr-x 1 Spaceible 197121 0 Jun  1  2019 'War Backup'/
+drwxr-xr-x 1 Spaceible 197121 0 Sep 29  2019 '$RECYCLE.BIN'/
+drwxr-xr-x 1 Spaceible 197121 0 Sep 29  2019 'Server Backup'/
+drwxr-xr-x 1 Spaceible 197121 0 Sep 29  2019 'System Volume Information'/
+drwxr-xr-x 1 Spaceible 197121 0 Jan 13 14:08 'DevOPs Tools'/
+drwxr-xr-x 1 Spaceible 197121 0 Jan 20 19:55 'Oracle Linux 7.5'/
+drwxr-xr-x 1 Spaceible 197121 0 Feb  3 18:25 'Oracle Disks'/
+drwxr-xr-x 1 Spaceible 197121 0 Feb  4 18:37  DEVOPS/
+
+Spaceible@SITS-AI-SERVER MINGW64 /e
+$ cd DEVOPS
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS
+$ ls -lrt
+total 8
+drwxr-xr-x 1 Spaceible 197121 0 Feb  4 17:59 vegrant/
+drwxr-xr-x 1 Spaceible 197121 0 Feb  4 18:26 vm1/
+drwxr-xr-x 1 Spaceible 197121 0 Feb  4 18:54 VM2/
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS
+$ mkdir vm3_docker
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS
+$ cd vm3_docker/
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ vagrant init
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ ls -lrt
+total 4
+-rw-r--r-- 1 Spaceible 197121 3080 Feb 17 16:26 Vagrantfile
+
+
+
+$ cat Vagrantfile
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  config.vm.box = "bento/centos-7.5"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # NOTE: This will enable public access to the opened port
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine and only allow access
+  # via 127.0.0.1 to disable public access
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  config.vm.network "private_network", ip: "192.168.33.33"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  config.vm.network "public_network", ip: "192.168.1.157"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+  config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+      vb.memory = "8192"
+      vb.cpus = "2"
+  end
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+end
+
+
+
+
+
+
+
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ vagrant up
+Vagrant failed to initialize at a very early stage:
+
+There is a syntax error in the following Vagrantfile. The syntax error
+message is reproduced below for convenience:
+
+E:/DEVOPS/vm3_docker/Vagrantfile:71: syntax error, unexpected end, expecting end-of-input
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ vi Vagrantfile
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'bento/centos-7.5'...
+==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'bento/centos-7.5' version '201808.24.0' is up to date...
+==> default: Setting the name of the VM: vm3_docker_default_1613559739483_88834
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: hostonly
+    default: Adapter 3: bridged
+==> default: Forwarding ports...
+    default: 22 (guest) => 2222 (host) (adapter 1)
+==> default: Running 'pre-boot' VM customizations...
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: Warning: Connection reset. Retrying...
+    default: Warning: Remote connection disconnect. Retrying...
+    default: Warning: Connection aborted. Retrying...
+    default: Warning: Connection reset. Retrying...
+    default: Warning: Connection aborted. Retrying...
+    default: Warning: Remote connection disconnect. Retrying...
+    default: Warning: Connection reset. Retrying...
+    default: Warning: Connection aborted. Retrying...
+    default:
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default:
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if it's present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+    default: The guest additions on this VM do not match the installed version of
+    default: VirtualBox! In most cases this is fine, but in rare cases it can
+    default: prevent things such as shared folders from working properly. If you see
+    default: shared folder errors, please make sure the guest additions within the
+    default: virtual machine match the version of VirtualBox you have installed on
+    default: your host and reload your VM.
+    default:
+    default: Guest Additions Version: 5.2.18
+    default: VirtualBox Version: 6.1
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => E:/DEVOPS/vm3_docker
+
+Spaceible@SITS-AI-SERVER MINGW64 /e/DEVOPS/vm3_docker
+$ vagrant ssh
+
+
+su[vagrant@localhost ~]$
+[vagrant@localhost ~]$
+[vagrant@localhost ~]$ sudo su -
+[root@localhost ~]#
+[root@localhost ~]#
+[root@localhost ~]# hostname
+localhost.localdomain
+[root@localhost ~]#
+
+
+
+============================================================================================================================================================================================================================================
+
+
+													Git
+
+
+============================================================================================================================================================================================================================================
+
+
+
+
+
+1) To change hostname on CentOS
+
+hostnamectl set-hostname git.sits.in
+
+bash
+
+2) Install git
+
+yum install git -y
+
+3) Check git Version
+
+git --v
+
+
+4) 
+
+[root@git ~]# git config --global user.name Milap Joshi
+[root@git ~]# git config --global user.email joshi.milap@gmail.com
+
+
+
+[root@git ~]# git config --global user.name
+Milap Joshi
+
+[root@git ~]# git config --global user.email
+joshi.milap@gmail.com
+
+
+[root@git ~]# mkdir infra-automation
+
+[root@git ~]# cd infra-automation/
+[root@git infra-automation]#
+
+
+
+[root@git infra-automation]# git init
+
+Initialized empty Git repository in /root/infra-automation/.git/
+
+[root@git infra-automation]# ls -lart
+total 0
+drwxr-xr-x. 3 root root  18 Feb  5 19:02 .
+drwxr-xr-x. 7 root root 119 Feb  5 19:02 .git
+dr-xr-x---. 3 root root 200 Feb  8 06:54 ..
+
+
+
+
+[root@git infra-automation]# cd .git/
+[root@git .git]#
+[root@git .git]# ls -lrt
+total 12
+drwxr-xr-x. 4 root root  31 Feb  5 19:02 refs
+drwxr-xr-x. 2 root root   6 Feb  5 19:02 branches
+-rw-r--r--. 1 root root  73 Feb  5 19:02 description
+drwxr-xr-x. 2 root root  21 Feb  5 19:02 info
+drwxr-xr-x. 2 root root 242 Feb  5 19:02 hooks
+-rw-r--r--. 1 root root  23 Feb  5 19:02 HEAD
+drwxr-xr-x. 4 root root  30 Feb  5 19:02 objects
+-rw-r--r--. 1 root root  92 Feb  8 07:00 config
+[root@git .git]#
+
+
+[root@git infra-automation]# vi readme.txt
+
+--Write some content or code
+
+
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       readme.txt
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+[root@git infra-automation]# git add readme.txt
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#       new file:   readme.txt
+#
+
+
+
+[root@git infra-automation]# git commit -m " Added readme to repo V1"
+[master (root-commit) 5cb8119]  Added readme to repo V1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+
+====================Need to format remaning ======================================
+
+
+[root@git infra-automation]# touch test2.war
+[root@git infra-automation]# touch test3.jar
+[root@git infra-automation]# touch test4.pyc
+[root@git infra-automation]#
+[root@git infra-automation]# vi test1.txt
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   test1.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       test2.war
+#       test3.jar
+#       test4.pyc
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# vi .gitignore
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   test1.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@git infra-automation]#
+[root@git infra-automation]# git add test1.txt
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       modified:   test1.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git reset HEAD test1.txt
+Unstaged changes after reset:
+M       test1.txt
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#
+#       modified:   test1.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+no changes added to commit (use "git add" and/or "git commit -a")
+[root@git infra-automation]#
+[root@git infra-automation]# git add test1.txt
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       modified:   test1.txt
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git commit " Added git ignore file "
+error: pathspec ' Added git ignore file ' did not match any file(s) known to git.
+[root@git infra-automation]# git commit -m " Added git ignore file "
+[master cf49e06]  Added git ignore file
+ 1 file changed, 7 insertions(+)
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+#       .gitignore
+nothing added to commit but untracked files present (use "git add" to track)
+[root@git infra-automation]#
+[root@git infra-automation]# git add .
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#       new file:   .gitignore
+#
+[root@git infra-automation]# git commit
+Aborting commit due to empty commit message.
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git commit
+Aborting commit due to empty commit message.
+[root@git infra-automation]# git commit -m " Commited git ignore"
+[master 877573f]  Commited git ignore
+ 1 file changed, 5 insertions(+)
+ create mode 100644 .gitignore
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git status
+# On branch master
+nothing to commit, working directory clean
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git log
+commit 877573fcfc9cf5d013cfdf31c0692540c8de8bfd
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 07:09:20 2021 +0000
+
+     Commited git ignore
+
+commit cf49e068ab1ed91a495f9b57eb6aa6ef9bd7d120
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 07:08:11 2021 +0000
+
+     Added git ignore file
+
+commit 3bb534d8ae2159e19cd2367a5dcc330df909ae80
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Tue Feb 9 14:17:35 2021 +0000
+
+     only readme update
+
+commit fc35019b1f7822ea187c746102813b7a6fe1802f
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Tue Feb 9 13:47:21 2021 +0000
+
+     New file added to text V2
+
+commit 5cb8119a22d1e3988fd6541c64e0d7629545cfec
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Mon Feb 8 18:01:25 2021 +0000
+
+     Added readme to repo V1
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git log --oneline
+877573f  Commited git ignore
+cf49e06  Added git ignore file
+3bb534d  only readme update
+fc35019  New file added to text V2
+5cb8119  Added readme to repo V1
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git log --online --decorate --graph
+fatal: unrecognized argument: --online
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git log --oneline --decorate --graph
+* 877573f (HEAD, master)  Commited git ignore
+* cf49e06  Added git ignore file
+* 3bb534d  only readme update
+* fc35019  New file added to text V2
+* 5cb8119  Added readme to repo V1
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git log
+commit 877573fcfc9cf5d013cfdf31c0692540c8de8bfd
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 07:09:20 2021 +0000
+
+     Commited git ignore
+
+commit cf49e068ab1ed91a495f9b57eb6aa6ef9bd7d120
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 07:08:11 2021 +0000
+
+     Added git ignore file
+
+commit 3bb534d8ae2159e19cd2367a5dcc330df909ae80
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Tue Feb 9 14:17:35 2021 +0000
+
+     only readme update
+
+commit fc35019b1f7822ea187c746102813b7a6fe1802f
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Tue Feb 9 13:47:21 2021 +0000
+
+     New file added to text V2
+
+commit 5cb8119a22d1e3988fd6541c64e0d7629545cfec
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Mon Feb 8 18:01:25 2021 +0000
+
+     Added readme to repo V1
+[root@git infra-automation]#
+
+
+[root@git infra-automation]# git tag --a releaseV1 -m " This is the first release with tag"
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git show releaseV1
+tag releaseV1
+Tagger: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 08:23:05 2021 +0000
+
+ This is the first release with tag
+
+commit 877573fcfc9cf5d013cfdf31c0692540c8de8bfd
+Author: joshi.milap@gmail.com <joshi.milap@gmail.com>
+Date:   Wed Feb 10 07:09:20 2021 +0000
+
+     Commited git ignore
+
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..e925e53
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,5 @@
++#Creating git ignore file to ignore binary files
++
++*.war
++*.pyc
++*.jar
+
+
+
+[root@git infra-automation]# git tag
+releaseV1
+[root@git infra-automation]#
+
+
+
+[root@git infra-automation]# ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):
+Created directory '/root/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:WDwUPXwDJOLUdspvxZpIFCnUo45/7QdGsTvAkBYs/EE root@git.sits.in
+The key's randomart image is:
++---[RSA 2048]----+
+|   . +E==Bo.     |
+|    ooB+B.* o    |
+|     +.X++ * .   |
+|      oo*.o o    |
+|     o..S= =     |
+|    . . . X      |
+|     .   + o     |
+|      . . . .    |
+|       . ...     |
++----[SHA256]-----+
+[root@git infra-automation]# cat ~/.ssh/id_rsa
+id_rsa      id_rsa.pub
+[root@git infra-automation]# cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDhbBO7D2laML/n4pMoafpx7lEO4WGzuQANmQb7GSaEoRbUnPg3+e2lymH8VrpdRUTCBZFFbJg6DEDlcw
+L8yNQugZ32dBsdca68s0unzyd8jfFr/FNbWOKvgQWJChG9M4ROIZg8wxt29ifce9MImqqesIC/PBDBb8MQs9WaBLxinM0oVlBQjwg8YcxC1wHJULmQxZjd
+xF9EgJ9UueQFZnTKd0QO9ILOTIXl6ROACV9eQdH77pShDvbZDAgCqcLKtcjCLmvHGdaw41N6PQ0446GkZQMs8yLR9kvYzYlCkkglXsSIygmH8xVsl1F/+k
+e5a29m3jAK/M+9An5nA1TPcBCP root@git.sits.in
+
+
+
+[root@git tmp]# git clone git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+Cloning into 'sits-infra-automation'...
+The authenticity of host 'bitbucket.org (104.192.141.1)' can't be established.
+RSA key fingerprint is SHA256:zzXQOXSRBEiUtuE8AikJYKwbHaxvSc0ojez9YXaGp1A.
+RSA key fingerprint is MD5:97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'bitbucket.org,104.192.141.1' (RSA) to the list of known hosts.
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+[root@git tmp]#
+[root@git tmp]# ls -lrt
+total 0
+drwx------. 3 root root 17 Feb  5 18:29 systemd-private-948a6404b1e9475191c99cdce0dcdff8-chronyd.service-e9vRVn
+drwx------. 3 root root 17 Feb 10 06:24 systemd-private-8462e6bf65684aa3a0fd7e6329f87b82-chronyd.service-FZUVtA
+drwxr-xr-x. 3 root root 36 Feb 10 17:51 sits-infra-automation
+[root@git tmp]# cd sits-infra-automation/
+[root@git sits-infra-automation]# ls -lrt
+total 0
+[root@git sits-infra-automation]#
+[root@git sits-infra-automation]# ls -la
+total 4
+drwxr-xr-x.  3 root root  36 Feb 10 17:51 .
+drwxrwxrwt. 10 root root 280 Feb 10 17:51 ..
+drwxr-xr-x.  8 root root 163 Feb 10 17:51 .git
+-rw-r--r--.  1 root root 624 Feb 10 17:51 .gitignore
+[root@git sits-infra-automation]#
+[root@git sits-infra-automation]#
+
+
+
+[root@git ~]# cd infra-automation/
+[root@git infra-automation]# ls -lrt
+total 8
+-rw-r--r--. 1 root root  47 Feb  9 14:16 readme.txt
+-rw-r--r--. 1 root root   0 Feb 10 07:05 test2.war
+-rw-r--r--. 1 root root   0 Feb 10 07:05 test3.jar
+-rw-r--r--. 1 root root   0 Feb 10 07:05 test4.pyc
+-rw-r--r--. 1 root root 122 Feb 10 07:05 test1.txt
+[root@git infra-automation]#
+[root@git infra-automation]# git remote add origin git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+[root@git infra-automation]#
+[root@git infra-automation]#
+[root@git infra-automation]# git remote -v
+origin  git@bitbucket.org:MilapJoshi007/sits-infra-automation.git (fetch)
+origin  git@bitbucket.org:MilapJoshi007/sits-infra-automation.git (push)
+[root@git infra-automation]#
+[root@git infra-automation]#
+
+
+[root@git infra-automation]# git push origin master
+To git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'git@bitbucket.org:MilapJoshi007/sits-infra-automation.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first merge the remote changes (e.g.,
+hint: 'git pull') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+[root@git infra-automation]#
+[root@git infra-automation]# cd ..
+[root@git ~]# cd /tmp/sits-infra-automation/
+[root@git sits-infra-automation]# git push origin master
+Everything up-to-date
+[root@git sits-infra-automation]#
+[root@git sits-infra-automation]# touch readme
+[root@git sits-infra-automation]# git add readme
+[root@git sits-infra-automation]# git commit -m " adding to remote"
+[master 0c2486d]  adding to remote
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readme
+[root@git sits-infra-automation]# git push origin master
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 272 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+   3225b99..0c2486d  master -> master
+[root@git sits-infra-automation]#
+[root@git sits-infra-automation]#
+
+[root@git infra-automation]# git pull origin master
+warning: no common commits
+remote: Counting objects: 6, done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0)
+Unpacking objects: 100% (6/6), done.
+From bitbucket.org:MilapJoshi007/sits-infra-automation
+ * branch            master     -> FETCH_HEAD
+Auto-merging .gitignore
+CONFLICT (add/add): Merge conflict in .gitignore
+Automatic merge failed; fix conflicts and then commit the result.
+[root@git infra-automation]#
+[root@git infra-automation]# vi .git
+.git/       .gitignore
+[root@git infra-automation]# vi .gitignore
+[root@git infra-automation]# git pull origin master
+U       .gitignore
+A       readme
+Pull is not possible because you have unmerged files.
+Please, fix them up in the work tree, and then use 'git add/rm <file>'
+as appropriate to mark resolution, or use 'git commit -a'.
+[root@git infra-automation]#
+[root@git infra-automation]# git add .
+[root@git infra-automation]# git commit -m " conflict resolved "
+[master 2aa4a6a]  conflict resolved
+[root@git infra-automation]# git pull origin master
+From bitbucket.org:MilapJoshi007/sits-infra-automation
+ * branch            master     -> FETCH_HEAD
+Already up-to-date.
+[root@git infra-automation]#
+[root@git infra-automation]# git push remote master
+fatal: 'remote' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[root@git infra-automation]# git push origin master
+Counting objects: 20, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (14/14), done.
+Writing objects: 100% (18/18), 1.83 KiB | 0 bytes/s, done.
+Total 18 (delta 0), reused 0 (delta 0)
+To git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+   0c2486d..2aa4a6a  master -> master
+[root@git infra-automation]#
+
+
+
+
+[root@newgit sits-infra-automation]#
+[root@newgit sits-infra-automation]#
+[root@newgit sits-infra-automation]#
+[root@newgit sits-infra-automation]# git branch
+* master
+[root@newgit sits-infra-automation]#
+[root@newgit sits-infra-automation]# git fetch ; git checkout Jira-SITS-87
+From bitbucket.org:MilapJoshi007/sits-infra-automation
+   2aa4a6a..77d72c7  master     -> origin/master
+ * [new branch]      Jira-SITS-87 -> origin/Jira-SITS-87
+Branch Jira-SITS-87 set up to track remote branch Jira-SITS-87 from origin.
+Switched to a new branch 'Jira-SITS-87'
+[root@newgit sits-infra-automation]# git branch
+* Jira-SITS-87
+  master
+[root@newgit sits-infra-automation]#
+[root@newgit sits-infra-automation]# touch feature.txt
+[root@newgit sits-infra-automation]# vi feature.txt
+[root@newgit sits-infra-automation]# git add feature.txt
+[root@newgit sits-infra-automation]# git commit feature.txt -m " Test for feature branch "
+[Jira-SITS-87 b40fb6f]  Test for feature branch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+[root@newgit sits-infra-automation]# git push origin Jira-SITS-87
+Counting objects: 4, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 308 bytes | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote:
+remote: Create pull request for Jira-SITS-87:
+remote:   https://bitbucket.org/MilapJoshi007/sits-infra-automation/pull-requests/new?source=Jira-SITS-87&t=1
+remote:
+To git@bitbucket.org:MilapJoshi007/sits-infra-automation.git
+   77d72c7..b40fb6f  Jira-SITS-87 -> Jira-SITS-87
+
+
+
+
+
+git cherypick
+git stash
+git tag
+git rebase
+
+
+
+============================================================================================================================================================================================================================================
+
+
+													Docker
+
+
+============================================================================================================================================================================================================================================
+
+
+
+
+What are cgroups and namespaces?
+
+cgroups, which stands for control groups, are a kernel mechanism for limiting and measuring the total resources used by a group of processes running on a system. For example, you can apply CPU, memory, network or IO quotas. cgroups were originally developed by Paul Menage and Rohit Seth of Google, and their first features were merged into Linux 2.6.24.
+
+Namespaces are a kernel mechanism for limiting the visibility that a group of processes has of the rest of a system. For example you can limit visibility to certain process trees, network interfaces, user IDs or filesystem mounts. namespaces were originally developed by Eric Biederman, and the final major namespace was merged into Linux 3.8.
+
+
+
+
+[root@docket ~]# wget get.docker.com
+--2021-02-17 11:17:39--  http://get.docker.com/
+Resolving get.docker.com (get.docker.com)... 13.227.138.98, 13.227.138.74, 13.227.138.77, ...
+Connecting to get.docker.com (get.docker.com)|13.227.138.98|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://get.docker.com/ [following]
+--2021-02-17 11:17:39--  https://get.docker.com/
+Connecting to get.docker.com (get.docker.com)|13.227.138.98|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 13857 (14K) [text/plain]
+Saving to: ‘index.html’
+
+100%[========================================================================================================>] 13,857      --.-K/s   in 0.001s
+
+2021-02-17 11:17:39 (11.6 MB/s) - ‘index.html’ saved [13857/13857]
+
+[root@docket ~]#
+[root@docket ~]# curl -fsSL https://get.docker.com/ | sh
+# Executing docker install script, commit: 3d8fe77c2c46c5b7571f94b42793905e5b3e42e4
++ sh -c 'yum install -y -q yum-utils'
+No Presto metadata available for base
++ sh -c 'yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo'
+Loaded plugins: fastestmirror
+adding repo from: https://download.docker.com/linux/centos/docker-ce.repo
+grabbing file https://download.docker.com/linux/centos/docker-ce.repo to /etc/yum.repos.d/docker-ce.repo
+repo saved to /etc/yum.repos.d/docker-ce.repo
++ '[' stable '!=' stable ']'
++ sh -c 'yum makecache'
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: centos.hbcse.tifr.res.in
+ * extras: centos.hbcse.tifr.res.in
+ * updates: centos.hbcse.tifr.res.in
+base                                                                                                                       | 3.6 kB  00:00:00
+docker-ce-stable                                                                                                           | 3.5 kB  00:00:00
+extras                                                                                                                     | 2.9 kB  00:00:00
+updates                                                                                                                    | 2.9 kB  00:00:00
+(1/10): docker-ce-stable/7/x86_64/filelists_db                                                                             |  24 kB  00:00:00
+(2/10): docker-ce-stable/7/x86_64/updateinfo                                                                               |   55 B  00:00:00
+(3/10): docker-ce-stable/7/x86_64/primary_db                                                                               |  55 kB  00:00:00
+(4/10): docker-ce-stable/7/x86_64/other_db                                                                                 | 117 kB  00:00:00
+(5/10): extras/7/x86_64/other_db                                                                                           | 135 kB  00:00:00
+(6/10): extras/7/x86_64/filelists_db                                                                                       | 225 kB  00:00:00
+(7/10): base/7/x86_64/filelists_db                                                                                         | 7.2 MB  00:00:01
+(8/10): updates/7/x86_64/other_db                                                                                          | 454 kB  00:00:00
+(9/10): base/7/x86_64/other_db                                                                                             | 2.6 MB  00:00:01
+(10/10): updates/7/x86_64/filelists_db                                                                                     | 3.4 MB  00:00:00
+Metadata Cache Created
++ '[' -n '' ']'
++ sh -c 'yum install -y -q docker-ce'
+No Presto metadata available for base
+No Presto metadata available for updates
+warning: /var/cache/yum/x86_64/7/docker-ce-stable/packages/docker-ce-20.10.3-3.el7.x86_64.rpm: Header V4 RSA/SHA512 Signature, key ID 621e9f35: NO
+KEY
+Public key for docker-ce-20.10.3-3.el7.x86_64.rpm is not installed
+Importing GPG key 0x621E9F35:
+ Userid     : "Docker Release (CE rpm) <docker@docker.com>"
+ Fingerprint: 060a 61c5 1b55 8a7f 742b 77aa c52f eb6b 621e 9f35
+ From       : https://download.docker.com/linux/centos/gpg
+If you would like to use Docker as a non-root user, you should now consider
+adding your user to the "docker" group with something like:
+
+  sudo usermod -aG docker your-user
+
+Remember that you will have to log out and back in for this to take effect!
+
+WARNING: Adding a user to the "docker" group will grant the ability to run
+         containers which can be used to obtain root privileges on the
+         docker host.
+         Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
+         for more information.
+[root@docket ~]# sudo usermod -aG docker vagrant
+[root@docket ~]# id vagrant
+uid=1000(vagrant) gid=1000(vagrant) groups=1000(vagrant),993(docker)
+
+
+[root@docket ~]#  systemctl start docker
+[root@docket ~]#  systemctl status docker
+● docker.service - Docker Application Container Engine
+   Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)
+   Active: active (running) since Wed 2021-02-17 11:22:26 UTC; 8s ago
+     Docs: https://docs.docker.com
+ Main PID: 13689 (dockerd)
+    Tasks: 9
+   Memory: 42.9M
+   CGroup: /system.slice/docker.service
+           └─13689 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Feb 17 11:22:25 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:25.712376209Z" level=info msg="scheme \"unix\" not registered, fal...le=grpc
+Feb 17 11:22:25 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:25.712388919Z" level=info msg="ccResolverWrapper: sending update t...le=grpc
+Feb 17 11:22:25 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:25.712397074Z" level=info msg="ClientConn switching balancer to \"...le=grpc
+Feb 17 11:22:25 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:25.740870081Z" level=info msg="Loading containers: start."
+Feb 17 11:22:25 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:25.972186364Z" level=info msg="Default bridge (docker0) is assigne...ddress"
+Feb 17 11:22:26 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:26.033028133Z" level=info msg="Loading containers: done."
+Feb 17 11:22:26 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:26.057439175Z" level=info msg="Docker daemon" commit=46229ca graph...20.10.3
+Feb 17 11:22:26 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:26.057687638Z" level=info msg="Daemon has completed initialization"
+Feb 17 11:22:26 docket.sits.in systemd[1]: Started Docker Application Container Engine.
+Feb 17 11:22:26 docket.sits.in dockerd[13689]: time="2021-02-17T11:22:26.088679222Z" level=info msg="API listen on /var/run/docker.sock"
+Hint: Some lines were ellipsized, use -l to show in full.
+
+[root@docket ~]#  systemctl enable docker
+Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+
+
+
+[vagrant@docket ~]$ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  app: Docker App (Docker Inc., v0.9.1-beta3)
+  buildx: Build with BuildKit (Docker Inc., v0.5.1-docker)
+
+Server:
+ Containers: 0
+  Running: 0
+  Paused: 0
+  Stopped: 0
+ Images: 0
+ Server Version: 20.10.3
+ Storage Driver: overlay2
+  Backing Filesystem: xfs
+  Supports d_type: true
+  Native Overlay Diff: true
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 1
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 269548fa27e0089a8b8278fc4fc781d7f65a939b
+ runc version: ff819c7e9184c13b7c2607fe6c30ae19403a7aff
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: default
+ Kernel Version: 3.10.0-862.11.6.el7.x86_64
+ Operating System: CentOS Linux 7 (Core)
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 7.639GiB
+ Name: docket.sits.in
+ ID: BTWS:TPYD:7EML:B7SV:UQ5L:KQ3J:FA32:4MCS:7V6B:RTYG:J4FQ:LUTM
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: bridge-nf-call-iptables is disabled
+WARNING: bridge-nf-call-ip6tables is disabled
+
+
+[vagrant@docker-test ~]$ docker --version
+Docker version 20.10.3, build 48d30b5
+[vagrant@docker-test ~]$
+
+
+
+[vagrant@docker-test ~]$ docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+0e03bdcc26d7: Pull complete
+Digest: sha256:95ddb6c31407e84e91a986b004aee40975cb0bda14b5949f6faac5d2deadb4b9
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+[vagrant@docker-test ~]$ docker run -it ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+83ee3a23efb7: Pull complete
+db98fc6f11f0: Pull complete
+f611acd52c6c: Pull complete
+Digest: sha256:703218c0465075f4425e58fac086e09e1de5c340b12976ab9eb8ad26615c3715
+Status: Downloaded newer image for ubuntu:latest
+root@43b40efc2993:/#
+root@43b40efc2993:/#
+
+
+
+[vagrant@docker-test ~]$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+[vagrant@docker-test ~]$
+[vagrant@docker-test ~]$
+[vagrant@docker-test ~]$
+[vagrant@docker-test ~]$ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED              STATUS                            PORTS     NAMES
+0fdea8192821   ubuntu        "bash"     About a minute ago   Exited (0) About a minute ago               dazzling_chebyshev
+43b40efc2993   ubuntu        "bash"     5 minutes ago        Exited (100) About a minute ago             strange_benz
+6957111c8e74   hello-world   "/hello"   8 minutes ago        Exited (0) 8 minutes ago                    pedantic_borg
+[vagrant@docker-test ~]$
+
+[vagrant@docker-test ~]$ docker search hello-world
+NAME                                       DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+hello-world                                Hello World! (an example of minimal Dockeriz…   1384      [OK]
+kitematic/hello-world-nginx                A light-weight nginx container that demonstr…   148
+tutum/hello-world                          Image to test docker deployments. Has Apache…   79                   [OK]
+dockercloud/hello-world                    Hello World!                                    19                   [OK]
+crccheck/hello-world                       Hello World web server in under 2.5 MB          14                   [OK]
+vad1mo/hello-world-rest                    A simple REST Service that echoes back all t…   4                    [OK]
+ppc64le/hello-world                        Hello World! (an example of minimal Dockeriz…   2
+ansibleplaybookbundle/hello-world-db-apb   An APB which deploys a sample Hello World! a…   1                    [OK]
+ansibleplaybookbundle/hello-world-apb      An APB which deploys a sample Hello World! a…   1                    [OK]
+markmnei/hello-world-java-docker           Hello-World-Java-docker                         1                    [OK]
+souravpatnaik/hello-world-go               hello-world in Golang                           1
+rancher/hello-world                                                                        1
+datawire/hello-world                       Hello World! Simple Hello World implementati…   1                    [OK]
+strimzi/hello-world-producer                                                               0
+strimzi/hello-world-streams                                                                0
+koudaiii/hello-world                                                                       0
+freddiedevops/hello-world-spring-boot                                                      0
+burdz/hello-world-k8s                      To provide a simple webserver that can have …   0                    [OK]
+businessgeeks00/hello-world-nodejs                                                         0
+strimzi/hello-world-consumer                                                               0
+infrastructureascode/hello-world           A tiny "Hello World" web server with a healt…   0                    [OK]
+airwavetechio/hello-world                                                                  0
+kevindockercompany/hello-world                                                             0
+nirmata/hello-world                                                                        0                    [OK]
+okteto/hello-world                                                                         0
+
+
+
+
+
+
+[vagrant@docker-prod ~]$ docker -help
+Flag shorthand -h has been deprecated, please use --help
+unknown shorthand flag: 'e' in -elp
+See 'docker --help'.
+
+Usage:  docker [OPTIONS] COMMAND
+
+A self-sufficient runtime for containers
+
+Options:
+      --config string      Location of client config files (default "/home/vagrant/.docker")
+  -c, --context string     Name of the context to use to connect to the daemon (overrides DOCKER_HOST env var
+                           and default context set with "docker context use")
+  -D, --debug              Enable debug mode
+  -H, --host list          Daemon socket(s) to connect to
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "/home/vagrant/.docker/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "/home/vagrant/.docker/cert.pem")
+      --tlskey string      Path to TLS key file (default "/home/vagrant/.docker/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -v, --version            Print version information and quit
+
+Management Commands:
+  app*        Docker App (Docker Inc., v0.9.1-beta3)
+  builder     Manage builds
+  buildx*     Build with BuildKit (Docker Inc., v0.5.1-docker)
+  config      Manage Docker configs
+  container   Manage containers
+  context     Manage contexts
+  image       Manage images
+  manifest    Manage Docker image manifests and manifest lists
+  network     Manage networks
+  node        Manage Swarm nodes
+  plugin      Manage plugins
+  secret      Manage Docker secrets
+  service     Manage services
+  stack       Manage Docker stacks
+  swarm       Manage Swarm
+  system      Manage Docker
+  trust       Manage trust on Docker images
+  volume      Manage volumes
+
+Commands:
+  attach      Attach local standard input, output, and error streams to a running container
+  build       Build an image from a Dockerfile
+  commit      Create a new image from a container's changes
+  cp          Copy files/folders between a container and the local filesystem
+  create      Create a new container
+  diff        Inspect changes to files or directories on a container's filesystem
+  events      Get real time events from the server
+  exec        Run a command in a running container
+  export      Export a container's filesystem as a tar archive
+  history     Show the history of an image
+  images      List images
+  import      Import the contents from a tarball to create a filesystem image
+  info        Display system-wide information
+  inspect     Return low-level information on Docker objects
+  kill        Kill one or more running containers
+  load        Load an image from a tar archive or STDIN
+  login       Log in to a Docker registry
+  logout      Log out from a Docker registry
+  logs        Fetch the logs of a container
+  pause       Pause all processes within one or more containers
+  port        List port mappings or a specific mapping for the container
+  ps          List containers
+  pull        Pull an image or a repository from a registry
+  push        Push an image or a repository to a registry
+  rename      Rename a container
+  restart     Restart one or more containers
+  rm          Remove one or more containers
+  rmi         Remove one or more images
+  run         Run a command in a new container
+  save        Save one or more images to a tar archive (streamed to STDOUT by default)
+  search      Search the Docker Hub for images
+  start       Start one or more stopped containers
+  stats       Display a live stream of container(s) resource usage statistics
+  stop        Stop one or more running containers
+  tag         Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  top         Display the running processes of a container
+  unpause     Unpause all processes within one or more containers
+  update      Update configuration of one or more containers
+  version     Show the Docker version information
+  wait        Block until one or more containers stop, then print their exit codes
+
+Run 'docker COMMAND --help' for more information on a command.
+
+To get more help with docker, check out our guides at https://docs.docker.com/go/guides/
+
+
+
+
+================================================================================Docker=============================================================================================================
+
+docker run -d -it --name NEWDB store/oracle/database-enterprise:12.2.0.1
+
+
+netstat -ntlp
+
+
+[vagrant@docker-prod ~]$ sudo su -
+Last login: Tue Jun  1 06:55:25 UTC 2021 on pts/0
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+69692152171a: Already exists
+7284b4e0cc7b: Already exists
+3678b2d55ccd: Already exists
+aeb67982a725: Already exists
+06954f8169fd: Already exists
+Digest: sha256:48bae0ac5d0d75168f1c1282c0eb21b43302cb1b5c5dc9fa3b4a758ccfb36fe9
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+httpd        latest    39c2d1c93266   6 days ago     138MB
+ubuntu       latest    7e0aa2d69a15   5 weeks ago    72.7MB
+centos       latest    300e315adb2f   5 months ago   209MB
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# docker rmi httpd
+Error response from daemon: conflict: unable to remove repository reference "httpd" (must force) - container 547a34eab
+fb9 is using its referenced image 39c2d1c93266
+[root@docker-prod ~]# docker rmi 39c2d1c93266
+Error response from daemon: conflict: unable to delete 39c2d1c93266 (must be forced) - image is being used by stopped
+container 547a34eabfb9
+[root@docker-prod ~]# docker rmi 39c2d1c93266 -f
+Untagged: httpd:latest
+Untagged: httpd@sha256:48bae0ac5d0d75168f1c1282c0eb21b43302cb1b5c5dc9fa3b4a758ccfb36fe9
+Deleted: sha256:39c2d1c9326678290fb11469ffde9785efa212f6cdfbea6d68a3d01ac11b41ae
+[root@docker-prod ~]#
+[root@docker-prod ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+ubuntu       latest    7e0aa2d69a15   5 weeks ago    72.7MB
+centos       latest    300e315adb2f   5 months ago   209MB
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+ubuntu       latest    7e0aa2d69a15   5 weeks ago    72.7MB
+centos       latest    300e315adb2f   5 months ago   209MB
+[root@docker-prod ~]# docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+69692152171a: Already exists
+7284b4e0cc7b: Already exists
+3678b2d55ccd: Already exists
+aeb67982a725: Already exists
+06954f8169fd: Already exists
+Digest: sha256:48bae0ac5d0d75168f1c1282c0eb21b43302cb1b5c5dc9fa3b4a758ccfb36fe9
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# ls -lrt
+total 24
+-rw-------. 1 root root  2071 Aug 24  2018 original-ks.cfg
+-rw-------. 1 root root  2745 Aug 24  2018 anaconda-ks.cfg
+-rw-r--r--. 1 root root 13857 Dec  9 04:25 index.html
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]#
+[root@docker-prod ~]# df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root   41G  2.1G   39G   6% /
+devtmpfs                 1.9G     0  1.9G   0% /dev
+tmpfs                    1.9G     0  1.9G   0% /dev/shm
+tmpfs                    1.9G  8.6M  1.9G   1% /run
+tmpfs                    1.9G     0  1.9G   0% /sys/fs/cgroup
+/dev/mapper/centos-home   20G   41M   20G   1% /home
+/dev/sda1               1014M  142M  873M  14% /boot
+vagrant                  932G  585G  347G  63% /vagrant
+tmpfs                    389M     0  389M   0% /run/user/1000
+[root@docker-prod ~]# cd /home/
+[root@docker-prod home]# ls -lrt
+total 0
+drwx------. 3 vagrant vagrant 116 Feb 24 05:55 vagrant
+drwxr-xr-x. 6 root    root    166 May 27 06:48 ODM_INFRA
+drwxr-xr-x. 3 root    root     42 May 27 07:04 myapp
+drwxr-xr-x. 3 root    root     46 May 27 07:15 mynewapp
+[root@docker-prod home]#
+[root@docker-prod home]# cd mynewapp/
+[root@docker-prod mynewapp]# ls -lrt
+total 676
+drwxr-xr-x. 6 root root     91 Sep 18  2020 technology
+-rw-r--r--. 1 root root 692216 Oct  1  2020 technology.zip
+[root@docker-prod mynewapp]# cd technology
+[root@docker-prod technology]# ls -lrt
+total 20
+drwxr-xr-x. 2 root root  4096 Feb  4  2016 fonts
+drwxr-xr-x. 2 root root   256 Feb  5  2016 css
+drwxr-xr-x. 2 root root   155 Feb  5  2016 js
+-rw-r--r--. 1 root root 11486 Feb  5  2016 index.html
+drwxr-xr-x. 2 root root   103 Feb  5  2016 images
+-rw-r--r--. 1 root root  1989 Apr  6  2016 LICENSE.txt
+[root@docker-prod technology]#
+[root@docker-prod technology]# pwd
+/home/mynewapp/technology
+[root@docker-prod technology]# docker run -itd -name myapp1 -p 8080:80 -v /home/mynewapp/technology:/usr/local/apache2
+/htdocs/ httpd:2.4
+unknown shorthand flag: 'n' in -name
+See 'docker run --help'.
+[root@docker-prod technology]# docker run -itd --name myapp1 -p 8080:80 -v /home/mynewapp/technology:/usr/local/apache
+2/htdocs/ httpd:2.4
+Unable to find image 'httpd:2.4' locally
+2.4: Pulling from library/httpd
+Digest: sha256:48bae0ac5d0d75168f1c1282c0eb21b43302cb1b5c5dc9fa3b4a758ccfb36fe9
+Status: Downloaded newer image for httpd:2.4
+02ce1ac860d653d7e15ea9072c7a0c55052a28396aa3dbaa69cad0f81286d92d
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED         STATUS         PORTS                  NAMES
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   9 seconds ago   Up 7 seconds   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# ifconfig -a
+docker0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        inet6 fe80::42:e4ff:fefa:23cd  prefixlen 64  scopeid 0x20<link>
+        ether 02:42:e4:fa:23:cd  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 5  bytes 438 (438.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255
+        inet6 fe80::ec70:6a4:3b14:7da0  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:8b:c9:3f  txqueuelen 1000  (Ethernet)
+        RX packets 2133  bytes 328359 (320.6 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1406  bytes 216332 (211.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.33.34  netmask 255.255.255.0  broadcast 192.168.33.255
+        inet6 fe80::a00:27ff:fec3:f4a4  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:c3:f4:a4  txqueuelen 1000  (Ethernet)
+        RX packets 168  bytes 18701 (18.2 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 17  bytes 1326 (1.2 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth2: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.159  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::a00:27ff:fe86:53f0  prefixlen 64  scopeid 0x20<link>
+        ether 08:00:27:86:53:f0  txqueuelen 1000  (Ethernet)
+        RX packets 650  bytes 49117 (47.9 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 142  bytes 11130 (10.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 64  bytes 5440 (5.3 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 64  bytes 5440 (5.3 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+vetha97c3b0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::20ec:c2ff:fe45:dfbc  prefixlen 64  scopeid 0x20<link>
+        ether 22:ec:c2:45:df:bc  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 13  bytes 1086 (1.0 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[root@docker-prod technology]# docker run -itd --name myapp2 ubuntu
+9fbd141d8b6036b4a2ea37c2c55622ad42e379fb566749e22e38f361767e360d
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED              STATUS              PORTS                  NAMES
+9fbd141d8b60   ubuntu      "/bin/bash"          5 seconds ago        Up 3 seconds                               myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps -a
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS                      PORTS
+    NAMES
+9fbd141d8b60   ubuntu         "/bin/bash"              2 minutes ago   Up 2 minutes
+    myapp2
+02ce1ac860d6   httpd:2.4      "httpd-foreground"       4 minutes ago   Up 4 minutes                0.0.0.0:8080->80/tc
+p   myapp1
+e3526d9beb77   centos         "/bin/bash"              11 hours ago    Exited (0) 11 hours ago
+    myapp
+331acb8c5ece   centos         "--name myapp /bin/b…"   11 hours ago    Created
+    agitated_villani
+3fc66ac6c0b2   centos         "--name myapp /bin/b…"   11 hours ago    Created
+    pedantic_lichterman
+00efb301e848   centos         "--name myapp"           11 hours ago    Created
+    priceless_hawking
+de9002ac0ac0   centos         "-name myapp"            11 hours ago    Created
+    beautiful_shtern
+adf0f7cdc48a   centos         "-name myapp /bin/ba…"   11 hours ago    Created
+    modest_euler
+6e738edf5779   centos         "--name myapp /bin/b…"   11 hours ago    Created
+    frosty_meitner
+547a34eabfb9   httpd:2.4      "httpd-foreground"       5 days ago      Exited (255) 36 hours ago   0.0.0.0:8081->80/tc
+p   My-App3
+38d3878a22fb   httpd:2.4      "httpd-foreground"       5 days ago      Created
+    My-App2
+83b205aeaae6   httpd:2.4      "httpd-foreground"       5 days ago      Exited (255) 36 hours ago   0.0.0.0:8080->80/tc
+p   My-App1
+5df7c522bab6   httpd:2.4      "httpd-foreground"       5 days ago      Exited (0) 5 days ago
+    My-App
+22c92cf78cf5   ubuntu         "/bin/bash"              6 days ago      Exited (255) 5 days ago
+    App1
+809947552e41   ubuntu         "/bin/bash"              6 days ago      Exited (0) 6 days ago
+    milap
+722b86c5e0e0   ubuntu         "--name Milap"           6 days ago      Created
+    blissful_mendel
+90af494f6758   7e0aa2d69a15   "/bin/bash"              6 days ago      Exited (0) 6 days ago
+    Milap
+c76e01c68870   ubuntu         "-itd --name Milap"      6 days ago      Created
+    sweet_banach
+52535a9bf73f   ubuntu         "-itd --name Milapub…"   6 days ago      Created
+    youthful_maxwell
+30f71c5a793b   491198851f0c   "sh"                     6 days ago      Exited (137) 6 days ago
+    upbeat_shaw
+14bc731e8550   491198851f0c   "sh"                     6 days ago      Exited (0) 6 days ago
+    objective_roentgen
+02e60d4ed1d1   491198851f0c   "-name Milap"            6 days ago      Created
+    sharp_kalam
+063640d25426   491198851f0c   "echo My name is MJ"     3 months ago    Exited (0) 3 months ago
+    distracted_hugle
+b113996b12fb   491198851f0c   "echo My name is MJ"     3 months ago    Exited (0) 3 months ago
+    adoring_black
+493fe4e878b4   bf756fb1ae65   "/hello"                 3 months ago    Exited (0) 3 months ago
+    condescending_dhawan
+[root@docker-prod technology]# docker rm 809947552e41
+809947552e41
+[root@docker-prod technology]# docker rm (ps -qa)
+-bash: syntax error near unexpected token `('
+[root@docker-prod technology]# docker rm $(docker ps -qa)
+e3526d9beb77
+331acb8c5ece
+3fc66ac6c0b2
+00efb301e848
+de9002ac0ac0
+adf0f7cdc48a
+6e738edf5779
+547a34eabfb9
+38d3878a22fb
+83b205aeaae6
+5df7c522bab6
+22c92cf78cf5
+722b86c5e0e0
+90af494f6758
+c76e01c68870
+52535a9bf73f
+30f71c5a793b
+14bc731e8550
+02e60d4ed1d1
+063640d25426
+b113996b12fb
+493fe4e878b4
+Error response from daemon: You cannot remove a running container 9fbd141d8b6036b4a2ea37c2c55622ad42e379fb566749e22e38
+f361767e360d. Stop the container before attempting removal or force remove
+Error response from daemon: You cannot remove a running container 02ce1ac860d653d7e15ea9072c7a0c55052a28396aa3dbaa69ca
+d0f81286d92d. Stop the container before attempting removal or force remove
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED         STATUS         PORTS                  NAMES
+9fbd141d8b60   ubuntu      "/bin/bash"          5 minutes ago   Up 5 minutes                          myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   6 minutes ago   Up 6 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps -a
+CONTAINER ID   IMAGE       COMMAND              CREATED         STATUS         PORTS                  NAMES
+9fbd141d8b60   ubuntu      "/bin/bash"          5 minutes ago   Up 5 minutes                          myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   6 minutes ago   Up 6 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# netstat -ntlp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1436/master
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      663/rpcbind
+tcp        0      0 0.0.0.0:8080            0.0.0.0:*               LISTEN      3425/docker-proxy
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1086/sshd
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1436/master
+tcp6       0      0 :::111                  :::*                    LISTEN      663/rpcbind
+tcp6       0      0 :::22                   :::*                    LISTEN      1086/sshd
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED         STATUS         PORTS                  NAMES
+9fbd141d8b60   ubuntu      "/bin/bash"          7 minutes ago   Up 7 minutes                          myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   8 minutes ago   Up 8 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker exec -it 9fbd141d8b60 /bin/bash
+root@9fbd141d8b60:/#
+[root@docker-prod technology]# docker run -itd --name myapp3 centos
+0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED          STATUS          PORTS                  NAMES
+0da5ed281726   centos      "/bin/bash"          6 seconds ago    Up 5 seconds                           myapp3
+9fbd141d8b60   ubuntu      "/bin/bash"          9 minutes ago    Up 8 minutes                           myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   10 minutes ago   Up 10 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+
+
+[root@docker-prod technology]# docker run -itd --name myapp3 centos
+0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c
+[root@docker-prod technology]#
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED          STATUS          PORTS                  NAMES
+0da5ed281726   centos      "/bin/bash"          6 seconds ago    Up 5 seconds                           myapp3
+9fbd141d8b60   ubuntu      "/bin/bash"          9 minutes ago    Up 8 minutes                           myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   10 minutes ago   Up 10 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]#
+[root@0da5ed281726 /]#
+[root@0da5ed281726 /]#
+[root@0da5ed281726 /]#
+[root@0da5ed281726 /]# yum install httpd -y
+Failed to set locale, defaulting to C.UTF-8
+CentOS Linux 8 - AppStream                                                            3.3 MB/s | 6.3 MB     00:01
+CentOS Linux 8 - BaseOS                                                               2.0 MB/s | 2.3 MB     00:01
+CentOS Linux 8 - Extras                                                               7.7 kB/s | 9.6 kB     00:01
+Dependencies resolved.
+======================================================================================================================
+ Package                     Architecture    Version                                         Repository          Size
+======================================================================================================================
+Installing:
+ httpd                       x86_64          2.4.37-30.module_el8.3.0+561+97fdbbcc           appstream          1.7 M
+Installing dependencies:
+ apr                         x86_64          1.6.3-11.el8                                    appstream          125 k
+ apr-util                    x86_64          1.6.1-6.el8                                     appstream          105 k
+ brotli                      x86_64          1.0.6-2.el8                                     baseos             322 k
+ centos-logos-httpd          noarch          80.5-2.el8                                      baseos              24 k
+ httpd-filesystem            noarch          2.4.37-30.module_el8.3.0+561+97fdbbcc           appstream           37 k
+ httpd-tools                 x86_64          2.4.37-30.module_el8.3.0+561+97fdbbcc           appstream          104 k
+ mailcap                     noarch          2.1.48-3.el8                                    baseos              39 k
+ mod_http2                   x86_64          1.15.7-2.module_el8.3.0+477+498bb568            appstream          154 k
+Installing weak dependencies:
+ apr-util-bdb                x86_64          1.6.1-6.el8                                     appstream           25 k
+ apr-util-openssl            x86_64          1.6.1-6.el8                                     appstream           27 k
+Enabling module streams:
+ httpd                                       2.4
+
+Transaction Summary
+======================================================================================================================
+Install  11 Packages
+
+Total download size: 2.6 M
+Installed size: 7.5 M
+Downloading Packages:
+CentOS Linux 8 - BaseOS                195% [=========================================================================
+(1/11): apr-util-1.6.1-6.el8.x86_64.rpm                                               850 kB/s | 105 kB     00:00
+(2/11): apr-util-openssl-1.6.1-6.el8.x86_64.rpm                                       1.5 MB/s |  27 kB     00:00
+(3/11): apr-1.6.3-11.el8.x86_64.rpm                                                   576 kB/s | 125 kB     00:00
+(4/11): apr-util-bdb-1.6.1-6.el8.x86_64.rpm                                            99 kB/s |  25 kB     00:00
+(5/11): httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch.rpm             966 kB/s |  37 kB     00:00
+(6/11): mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64.rpm                     1.4 MB/s | 154 kB     00:00
+(7/11): httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64.rpm                  465 kB/s | 104 kB     00:00
+(8/11): brotli-1.0.6-2.el8.x86_64.rpm                                                 2.5 MB/s | 322 kB     00:00
+(9/11): mailcap-2.1.48-3.el8.noarch.rpm                                               2.3 MB/s |  39 kB     00:00
+(10/11): centos-logos-httpd-80.5-2.el8.noarch.rpm                                     217 kB/s |  24 kB     00:00
+(11/11): httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64.rpm                       1.7 MB/s | 1.7 MB     00:00
+----------------------------------------------------------------------------------------------------------------------
+Total                                                                                 1.1 MB/s | 2.6 MB     00:02
+warning: /var/cache/dnf/appstream-02e86d1c976ab532/packages/apr-1.6.3-11.el8.x86_64.rpm: Header V3 RSA/SHA256 Signatur
+e, key ID 8483c65d: NOKEY
+CentOS Linux 8 - AppStream                                                            976 kB/s | 1.6 kB     00:00
+Importing GPG key 0x8483C65D:
+ Userid     : "CentOS (CentOS Official Signing Key) <security@centos.org>"
+ Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                              1/1
+  Installing       : apr-1.6.3-11.el8.x86_64                                                                     1/11
+  Running scriptlet: apr-1.6.3-11.el8.x86_64                                                                     1/11
+  Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                                                             2/11
+  Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                                                         3/11
+  Installing       : apr-util-1.6.1-6.el8.x86_64                                                                 4/11
+  Running scriptlet: apr-util-1.6.1-6.el8.x86_64                                                                 4/11
+  Installing       : httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64                                    5/11
+  Installing       : mailcap-2.1.48-3.el8.noarch                                                                 6/11
+  Installing       : centos-logos-httpd-80.5-2.el8.noarch                                                        7/11
+  Installing       : brotli-1.0.6-2.el8.x86_64                                                                   8/11
+  Running scriptlet: httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch                               9/11
+  Installing       : httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch                               9/11
+  Installing       : mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64                                      10/11
+  Installing       : httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64                                         11/11
+  Running scriptlet: httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64                                         11/11
+  Verifying        : apr-1.6.3-11.el8.x86_64                                                                     1/11
+  Verifying        : apr-util-1.6.1-6.el8.x86_64                                                                 2/11
+  Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                                                             3/11
+  Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                                                         4/11
+  Verifying        : httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64                                          5/11
+  Verifying        : httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch                               6/11
+  Verifying        : httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64                                    7/11
+  Verifying        : mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64                                       8/11
+  Verifying        : brotli-1.0.6-2.el8.x86_64                                                                   9/11
+  Verifying        : centos-logos-httpd-80.5-2.el8.noarch                                                       10/11
+  Verifying        : mailcap-2.1.48-3.el8.noarch                                                                11/11
+
+Installed:
+  apr-1.6.3-11.el8.x86_64
+  apr-util-1.6.1-6.el8.x86_64
+  apr-util-bdb-1.6.1-6.el8.x86_64
+  apr-util-openssl-1.6.1-6.el8.x86_64
+  brotli-1.0.6-2.el8.x86_64
+  centos-logos-httpd-80.5-2.el8.noarch
+  httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64
+  httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch
+  httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64
+  mailcap-2.1.48-3.el8.noarch
+  mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64
+
+Complete!
+[root@0da5ed281726 /]#
+[root@0da5ed281726 /]# docker ps
+bash: docker: command not found
+[root@0da5ed281726 /]# exit
+exit
+[root@docker-prod technology]# docker ps
+CONTAINER ID   IMAGE       COMMAND              CREATED          STATUS          PORTS                  NAMES
+0da5ed281726   centos      "/bin/bash"          6 minutes ago    Up 6 minutes                           myapp3
+9fbd141d8b60   ubuntu      "/bin/bash"          14 minutes ago   Up 14 minutes                          myapp2
+02ce1ac860d6   httpd:2.4   "httpd-foreground"   16 minutes ago   Up 16 minutes   0.0.0.0:8080->80/tcp   myapp1
+[root@docker-prod technology]# docker commit 0da5ed281726 httpd/cenos:v1
+sha256:f3338e63d45bb28eb84233eb8452407c28dd84fcad46cfd6faa523c7a25f2b38
+[root@docker-prod technology]#
+[root@docker-prod technology]# docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+httpd/cenos   v1        f3338e63d45b   5 seconds ago   250MB
+httpd         2.4       39c2d1c93266   6 days ago      138MB
+httpd         latest    39c2d1c93266   6 days ago      138MB
+ubuntu        latest    7e0aa2d69a15   5 weeks ago     72.7MB
+centos        latest    300e315adb2f   5 months ago    209MB
+
+
+
+
+[root@docker-prod technology]# docker inspect 0da5ed281726
+[
+    {
+        "Id": "0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c",
+        "Created": "2021-06-01T17:55:18.492650627Z",
+        "Path": "/bin/bash",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 3803,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2021-06-01T17:55:19.278753249Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:300e315adb2f96afe5f0b2780b87f28ae95231fe3bdd1e16b9ba606307728f55",
+        "ResolvConfPath": "/var/lib/docker/containers/0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c
+/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c/h
+ostname",
+        "HostsPath": "/var/lib/docker/containers/0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c/host
+s",
+        "LogPath": "/var/lib/docker/containers/0da5ed28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c/0da5ed
+28172652e3eb9e4afe0adf07a5337aaf829fa2bbb144198fa3cfb3f94c-json.log",
+        "Name": "/myapp3",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "host",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "KernelMemory": 0,
+            "KernelMemoryTCP": 0,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": false,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/7987ceec3b53f96a50cbd258f4ab0e886c2dd20bc8bd2be8afea0b0b5c97f24c
+-init/diff:/var/lib/docker/overlay2/3fce76802eb8fbb292d7301bb94c600994dc7c5ff1894af67392f25e79d19a32/diff",
+                "MergedDir": "/var/lib/docker/overlay2/7987ceec3b53f96a50cbd258f4ab0e886c2dd20bc8bd2be8afea0b0b5c97f24
+c/merged",
+                "UpperDir": "/var/lib/docker/overlay2/7987ceec3b53f96a50cbd258f4ab0e886c2dd20bc8bd2be8afea0b0b5c97f24c
+/diff",
+                "WorkDir": "/var/lib/docker/overlay2/7987ceec3b53f96a50cbd258f4ab0e886c2dd20bc8bd2be8afea0b0b5c97f24c/
+work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "0da5ed281726",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": true,
+            "OpenStdin": true,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": [
+                "/bin/bash"
+            ],
+            "Image": "centos",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {
+                "org.label-schema.build-date": "20201204",
+                "org.label-schema.license": "GPLv2",
+                "org.label-schema.name": "CentOS Base Image",
+                "org.label-schema.schema-version": "1.0",
+                "org.label-schema.vendor": "CentOS"
+            }
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "d1f7a0d95a4328d1672d1fbc26c5a5ed1ba64a8d88d52043cf3baa408e053f40",
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "Ports": {},
+            "SandboxKey": "/var/run/docker/netns/d1f7a0d95a43",
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "b1f52b8c1a1b99e35629d88967834b90fc847bcb169badbffdc0964a2223f521",
+            "Gateway": "172.17.0.1",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "172.17.0.4",
+            "IPPrefixLen": 16,
+            "IPv6Gateway": "",
+            "MacAddress": "02:42:ac:11:00:04",
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "NetworkID": "d63fb178c8e10daf9ea843f7cbe39963d08b00a0eba3404111702b22e25ab8ae",
+                    "EndpointID": "b1f52b8c1a1b99e35629d88967834b90fc847bcb169badbffdc0964a2223f521",
+                    "Gateway": "172.17.0.1",
+                    "IPAddress": "172.17.0.4",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "MacAddress": "02:42:ac:11:00:04",
+                    "DriverOpts": null
+                }
+            }
+        }
+    }
+]
+[root@docker-prod technology]#
+
+
+
+
+[root@docker-prod technology]# docker stats
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O           BLOCK I/O        PIDS
+0da5ed281726   myapp3    0.00%     47.79MiB / 3.793GiB   1.23%     11.8MB / 75.1kB   213MB / 29.8MB   1
+9fbd141d8b60   myapp2    0.00%     1.574MiB / 3.793GiB   0.04%     732B / 0B         8.26MB / 0B      1
+02ce1ac860d6   myapp1    0.01%     13.72MiB / 3.793GiB   0.35%     25.2kB / 521kB    18.5MB / 0B      82
+
+
+
+[root@docker-prod home]# vi Dockerfile
+[root@docker-prod home]# docker build -t centos/httpd:V2 -f Dockerfile .^C
+[root@docker-prod home]#
+[root@docker-prod home]#
+[root@docker-prod home]# docker build --help
+
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+Build an image from a Dockerfile
+
+Options:
+      --add-host list           Add a custom host-to-IP mapping (host:ip)
+      --build-arg list          Set build-time variables
+      --cache-from strings      Images to consider as cache sources
+      --cgroup-parent string    Optional parent cgroup for the container
+      --compress                Compress the build context using gzip
+      --cpu-period int          Limit the CPU CFS (Completely Fair Scheduler) period
+      --cpu-quota int           Limit the CPU CFS (Completely Fair Scheduler) quota
+  -c, --cpu-shares int          CPU shares (relative weight)
+      --cpuset-cpus string      CPUs in which to allow execution (0-3, 0,1)
+      --cpuset-mems string      MEMs in which to allow execution (0-3, 0,1)
+      --disable-content-trust   Skip image verification (default true)
+  -f, --file string             Name of the Dockerfile (Default is 'PATH/Dockerfile')
+      --force-rm                Always remove intermediate containers
+      --iidfile string          Write the image ID to the file
+      --isolation string        Container isolation technology
+      --label list              Set metadata for an image
+  -m, --memory bytes            Memory limit
+      --memory-swap bytes       Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+      --network string          Set the networking mode for the RUN instructions during build (default "default")
+      --no-cache                Do not use cache when building the image
+      --pull                    Always attempt to pull a newer version of the image
+  -q, --quiet                   Suppress the build output and print image ID on success
+      --rm                      Remove intermediate containers after a successful build (default true)
+      --security-opt strings    Security options
+      --shm-size bytes          Size of /dev/shm
+  -t, --tag list                Name and optionally a tag in the 'name:tag' format
+      --target string           Set the target build stage to build.
+      --ulimit ulimit           Ulimit options (default [])
+[root@docker-prod home]# docker build -t centos/httpd:V2 -f Dockerfile .
+Sending build context to Docker daemon  8.485MB
+Step 1/3 : FROM centos
+ ---> 300e315adb2f
+Step 2/3 : MAINTAINER spaceible@gmail.com
+ ---> Running in 8612114dcafc
+Removing intermediate container 8612114dcafc
+ ---> 99b3c23af97e
+Step 3/3 : RUN yum install httpd -y
+ ---> Running in aabc6a6b9c55
+CentOS Linux 8 - AppStream                      2.8 MB/s | 6.3 MB     00:02
+CentOS Linux 8 - BaseOS                         1.7 MB/s | 2.3 MB     00:01
+CentOS Linux 8 - Extras                          11 kB/s | 9.6 kB     00:00
+Dependencies resolved.
+================================================================================
+ Package           Arch   Version                               Repo       Size
+================================================================================
+Installing:
+ httpd             x86_64 2.4.37-30.module_el8.3.0+561+97fdbbcc appstream 1.7 M
+Installing dependencies:
+ apr               x86_64 1.6.3-11.el8                          appstream 125 k
+ apr-util          x86_64 1.6.1-6.el8                           appstream 105 k
+ brotli            x86_64 1.0.6-2.el8                           baseos    322 k
+ centos-logos-httpd
+                   noarch 80.5-2.el8                            baseos     24 k
+ httpd-filesystem  noarch 2.4.37-30.module_el8.3.0+561+97fdbbcc appstream  37 k
+ httpd-tools       x86_64 2.4.37-30.module_el8.3.0+561+97fdbbcc appstream 104 k
+ mailcap           noarch 2.1.48-3.el8                          baseos     39 k
+ mod_http2         x86_64 1.15.7-2.module_el8.3.0+477+498bb568  appstream 154 k
+Installing weak dependencies:
+ apr-util-bdb      x86_64 1.6.1-6.el8                           appstream  25 k
+ apr-util-openssl  x86_64 1.6.1-6.el8                           appstream  27 k
+Enabling module streams:
+ httpd                    2.4
+
+Transaction Summary
+================================================================================
+Install  11 Packages
+
+Total download size: 2.6 M
+Installed size: 7.5 M
+Downloading Packages:
+(1/11): apr-util-bdb-1.6.1-6.el8.x86_64.rpm     339 kB/s |  25 kB     00:00
+(2/11): apr-util-openssl-1.6.1-6.el8.x86_64.rpm 1.4 MB/s |  27 kB     00:00
+(3/11): apr-1.6.3-11.el8.x86_64.rpm             874 kB/s | 125 kB     00:00
+(4/11): httpd-filesystem-2.4.37-30.module_el8.3 1.3 MB/s |  37 kB     00:00
+(5/11): httpd-tools-2.4.37-30.module_el8.3.0+56 1.6 MB/s | 104 kB     00:00
+(6/11): mod_http2-1.15.7-2.module_el8.3.0+477+4 1.7 MB/s | 154 kB     00:00
+(7/11): apr-util-1.6.1-6.el8.x86_64.rpm         285 kB/s | 105 kB     00:00
+(8/11): httpd-2.4.37-30.module_el8.3.0+561+97fd 5.3 MB/s | 1.7 MB     00:00
+(9/11): centos-logos-httpd-80.5-2.el8.noarch.rp 193 kB/s |  24 kB     00:00
+(10/11): mailcap-2.1.48-3.el8.noarch.rpm        174 kB/s |  39 kB     00:00
+(11/11): brotli-1.0.6-2.el8.x86_64.rpm          697 kB/s | 322 kB     00:00
+--------------------------------------------------------------------------------
+Total                                           1.6 MB/s | 2.6 MB     00:01
+warning: /var/cache/dnf/appstream-02e86d1c976ab532/packages/apr-1.6.3-11.el8.x86_64.rpm: Header V3 RSA/SHA256 Signatur
+e, key ID 8483c65d: NOKEY
+CentOS Linux 8 - AppStream                      1.6 MB/s | 1.6 kB     00:00
+Importing GPG key 0x8483C65D:
+ Userid     : "CentOS (CentOS Official Signing Key) <security@centos.org>"
+ Fingerprint: 99DB 70FA E1D7 CE22 7FB6 4882 05B5 55B3 8483 C65D
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-centosofficial
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : apr-1.6.3-11.el8.x86_64                               1/11
+  Running scriptlet: apr-1.6.3-11.el8.x86_64                               1/11
+  Installing       : apr-util-bdb-1.6.1-6.el8.x86_64                       2/11
+  Installing       : apr-util-openssl-1.6.1-6.el8.x86_64                   3/11
+  Installing       : apr-util-1.6.1-6.el8.x86_64                           4/11
+  Running scriptlet: apr-util-1.6.1-6.el8.x86_64                           4/11
+  Installing       : httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.    5/11
+  Installing       : mailcap-2.1.48-3.el8.noarch                           6/11
+  Installing       : centos-logos-httpd-80.5-2.el8.noarch                  7/11
+  Installing       : brotli-1.0.6-2.el8.x86_64                             8/11
+  Running scriptlet: httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fd    9/11
+  Installing       : httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fd    9/11
+  Installing       : mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86   10/11
+  Installing       : httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64   11/11
+  Running scriptlet: httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64   11/11
+  Verifying        : apr-1.6.3-11.el8.x86_64                               1/11
+  Verifying        : apr-util-1.6.1-6.el8.x86_64                           2/11
+  Verifying        : apr-util-bdb-1.6.1-6.el8.x86_64                       3/11
+  Verifying        : apr-util-openssl-1.6.1-6.el8.x86_64                   4/11
+  Verifying        : httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64    5/11
+  Verifying        : httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fd    6/11
+  Verifying        : httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.    7/11
+  Verifying        : mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86    8/11
+  Verifying        : brotli-1.0.6-2.el8.x86_64                             9/11
+  Verifying        : centos-logos-httpd-80.5-2.el8.noarch                 10/11
+  Verifying        : mailcap-2.1.48-3.el8.noarch                          11/11
+
+Installed:
+  apr-1.6.3-11.el8.x86_64
+  apr-util-1.6.1-6.el8.x86_64
+  apr-util-bdb-1.6.1-6.el8.x86_64
+  apr-util-openssl-1.6.1-6.el8.x86_64
+  brotli-1.0.6-2.el8.x86_64
+  centos-logos-httpd-80.5-2.el8.noarch
+  httpd-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64
+  httpd-filesystem-2.4.37-30.module_el8.3.0+561+97fdbbcc.noarch
+  httpd-tools-2.4.37-30.module_el8.3.0+561+97fdbbcc.x86_64
+  mailcap-2.1.48-3.el8.noarch
+  mod_http2-1.15.7-2.module_el8.3.0+477+498bb568.x86_64
+
+Complete!
+Removing intermediate container aabc6a6b9c55
+ ---> 448a7e6a64cf
+Successfully built 448a7e6a64cf
+Successfully tagged centos/httpd:V2
+[root@docker-prod home]# docker images
+REPOSITORY     TAG       IMAGE ID       CREATED             SIZE
+centos/httpd   V2        448a7e6a64cf   9 seconds ago       250MB
+httpd/cenos    v1        f3338e63d45b   About an hour ago   250MB
+httpd          2.4       39c2d1c93266   6 days ago          138MB
+httpd          latest    39c2d1c93266   6 days ago          138MB
+ubuntu         latest    7e0aa2d69a15   5 weeks ago         72.7MB
+centos         latest    300e315adb2f   5 months ago        209MB
+[root@docker-prod home]# cat Dockerfile
+FROM centos
+MAINTAINER spaceible@gmail.com
+RUN yum install httpd -y
+
+
+
+
+[root@docker-prod home]# docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https:/
+/hub.docker.com to create one.
+Username: milapjoshi84
+Password:
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[root@docker-prod home]#
+[root@docker-prod home]# cat /root/.docker/config.json
+{
+        "auths": {
+                "https://index.docker.io/v1/": {
+                        "auth": "bWlsYXBqb3NoaTg0OkJhbGljaXQkMDE="
+                }
+        }
+}[root@docker-prod home]#docker push milapjoshi84/centoshttpd:V2
+The push refers to repository [docker.io/milapjoshi84/centoshttpd]
+7d7ab7bec290: Pushed
+2653d992f4ef: Mounted from library/centos
+V2: digest: sha256:b57c74efee0c16f2c169811b59516a0be1d57c818190f4508aed4619ae5198bd size: 741
+
+
+[root@docker-prod home]# docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+d44a1e647bd0   bridge    bridge    local
+12966a02e3e2   host      host      local
+3c01172b426f   none      null      local
+
+
+
+docker network rm <network name>
+
+
+===================================================================================================================
+ENV
+CMD
+EXPOSE
+docker create –-name java centos-java
+docker commit java phill/question:java-1.0
+Docker compose (Check examples of it with workpress,django etc)
+
+Multiple website hosting --> NGINIX --> virtual hosting
